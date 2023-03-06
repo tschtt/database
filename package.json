@@ -1,0 +1,23 @@
+{
+  "name": "@tschtt/database",
+  "version": "1.0.0",
+  "description": "A MySQL Controller inspired by MongoDB's API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "main": "nodemon -r dotenv/config source/database.js",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tschtt/query-builder": "github:tschtt/query-builder",
+    "mysql2": "^3.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.21",
+    "vitest": "^0.29.2"
+  }
+}
