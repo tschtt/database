@@ -71,7 +71,7 @@ export async function filter(table, where, options = {}) {
 
 // find
 
-export async function find(table, where, options) {
+export async function find(table, where, options = {}) {
   options.limit = 1
   const result = await filter(table, where, options)
   return result[0]
@@ -166,6 +166,10 @@ export function table(name) {
 
 // database
 
+export async function end () {
+  await database.end()
+}
+
 export default {
   query,
   filter,
@@ -177,4 +181,5 @@ export default {
   updateOne,
   remove,
   table,
+  end,
 }
