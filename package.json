@@ -2,10 +2,10 @@
   "name": "@tschtt/database",
   "version": "1.0.0",
   "description": "A simple MySQL Controller inspired by MongoDB's API",
-  "main": "index.js",
+  "main": "source/index.js",
   "type": "module",
   "scripts": {
-    "main": "nodemon -r dotenv/config source/database.js",
+    "main": "nodemon -r dotenv/config source/index.js",
     "test": "vitest"
   },
   "keywords": [],

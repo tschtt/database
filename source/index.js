@@ -23,7 +23,7 @@ function parseResponse(response) {
   return result
 }
 
-// QUERY
+// query
 
 export async function query(sql, values) {
   let result
@@ -32,7 +32,7 @@ export async function query(sql, values) {
   return result
 }
 
-// FILTER
+// filter
 
 export async function filter(table, where, options = {}) {
   const sql = ['select * from ??']
@@ -69,7 +69,7 @@ export async function filter(table, where, options = {}) {
   return result.rows
 }
 
-// FIND
+// find
 
 export async function find(table, where, options) {
   options.limit = 1
@@ -77,7 +77,7 @@ export async function find(table, where, options) {
   return result[0]
 }
 
-// CREATE
+// create
 
 export async function create(table, data) {
   if (Array.isArray(data)) return createMany(table, data)
@@ -98,7 +98,7 @@ export async function createOne(table, row) {
   return result.insertId
 }
 
-// UPDATE
+// update
 
 export async function update(table, where, data) {
   const sql = ['update ::table set :data']
@@ -132,13 +132,7 @@ export async function updateOne(table, where, data) {
   return result.affectedRows
 }
 
-export async function updateMany(table, column, data) {
-  const promises = []
-  for (const iterator of object) {
-  }
-}
-
-// REMOVE
+// remove
 
 export async function remove(table, where) {
   const sql = ['delete from ::table']
@@ -153,4 +147,34 @@ export async function remove(table, where) {
   const result = await query(sql.join(' '), values)
 
   return result.affectedRows
+}
+
+// table
+
+export function table(name) {
+  return {
+    filter: (where, options = {}) => filter(name, where, options = {}),
+    find: (where, options) => find(name, where, options),
+    create: (data) => create(name, data),
+    createMany: (rows) => createMany(name, rows),
+    createOne: (row) => createOne(name, row),
+    update: (where, data) => update(name, where, data),
+    updateOne: (where, data) => updateOne(name, where, data),
+    remove: (where) => remove(name, where),
+  }
+}
+
+// database
+
+export default {
+  query,
+  filter,
+  find,
+  create,
+  createMany,
+  createOne,
+  update,
+  updateOne,
+  remove,
+  table,
 }
