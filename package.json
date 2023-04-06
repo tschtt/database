@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tschtt/query-builder": "file:../query-builder",
+    "@tschtt/query-builder": "^0.1.0",
     "mysql2": "^3.2.0"
   },
   "devDependencies": {
