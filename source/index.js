@@ -132,6 +132,17 @@ export async function updateOne(table, where, data) {
   return result.affectedRows
 }
 
+// upsert 
+
+export async function upsert(table, where, data) {
+  const item = await find(table, where)
+  if(item) {
+    await update(table, { id: item.id }, data)
+    return item.id
+  }
+  return await create(table, data)
+}
+
 // remove
 
 export async function remove(table, where) {
@@ -179,6 +190,7 @@ export default {
   createOne,
   update,
   updateOne,
+  upsert,
   remove,
   table,
   end,
