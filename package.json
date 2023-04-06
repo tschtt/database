@@ -1,6 +1,6 @@
 {
   "name": "@tschtt/database",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple MySQL Controller inspired by MongoDB's API",
   "main": "source/index.js",
   "type": "module",
